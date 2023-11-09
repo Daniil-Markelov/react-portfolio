@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 const MyNavbar = () => {
   return (
     <Navbar bg="light" expand="lg">
-      <Container>
-        <Navbar.Brand as={Link} to="/">Daniil</Navbar.Brand>
+      <Container >
+        <Navbar.Brand as={Link} to="/portfolio">Daniil</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
           <Nav className="ml-auto">
             <Nav.Link as={Link} to="/">Countries</Nav.Link>
             <Nav.Link as={Link} to="/contact">Contact</Nav.Link>

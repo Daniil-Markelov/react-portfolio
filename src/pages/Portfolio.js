@@ -1,10 +1,10 @@
 import ComingSoon from "../components/ComingSoon";
 
-const About = () => {
+const Portfolio = () => {
     return (
             <div>
-                 <ComingSoon pageName="About Page"/>
+                <ComingSoon pageName="My Portfolio"/>
             </div>
         );
     };
-        export default About;
+        export default Portfolio;

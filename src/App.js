@@ -8,6 +8,7 @@ import MyNavbar from "./components/MyNavbar";
 import CountryCard from "./components/CountryCard";
 import SingleCountry from "./pages/SingleCountry";
 import 'mapbox-gl/dist/mapbox-gl.css';
+import Portfolio from "./pages/Portfolio";
 function App() {
   return (
 <Router>
@@ -15,7 +16,7 @@ function App() {
     <Routes>
 
       <Route path="/" element={<Home />} />
-      <Route path="/" element={<Home />} />
+      <Route path="/portfolio" element={<Portfolio/>} />
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="*" element={<PageNotFound />} />

@@ -8,6 +8,7 @@ import Image from "react-bootstrap/Image";
 import Card from 'react-bootstrap/Card';
 import CurChart from "../components/CurChart";
 import ReactMapGL from 'react-map-gl';
+import '../css/singleCountry.css';
 
 
 const SingleCountry = () => {
@@ -79,6 +80,8 @@ const defaultMarker ="via-sm-7B0099";
               {weather && (
                 <div className="text-center">
                   <p><strong>Temperature:</strong> {weather.main.temp} °C</p>
+                  <p><strong>Feels like:</strong> {weather.main.feels_like} °C</p>
+                  <p><strong>Humidity:</strong> {weather.main.humidity} %</p>
                   <p><strong>Weather:</strong> {weather.weather[0].description}{getWeatherEmoji(weather.weather[0].main)}</p>
                 </div>
               )}
@@ -99,6 +102,7 @@ const defaultMarker ="via-sm-7B0099";
                   style={{ width: '100%', height: 'auto' }}
                 />
               )}
+              <p className="map-desc">Pink Dot is Indicitive of Capital Location</p>
             </Col>
           </Row>
         </Card.Body>

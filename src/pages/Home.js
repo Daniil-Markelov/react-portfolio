@@ -71,9 +71,9 @@ const Home = () => {
 
   return (
     <Container>
-      <h1 className="text-center mb-4">Countries of the World</h1>
+      <h1 className="text-center mb-4 mt-4 hero">Countries of the World 🌍</h1>
 
-      {/* Search Form */}
+      
       <Form className="mb-3">
         <Form.Control
           type="text"
