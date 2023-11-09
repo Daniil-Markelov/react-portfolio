@@ -4,13 +4,13 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import PageNotFound from "./pages/PageNotFound";
 import NavigateExample from "./pages/NavigateExample";
-import Navbar from "./components/Navbar";
+import MyNavbar from "./components/MyNavbar";
 import CountryCard from "./components/CountryCard";
 import SingleCountry from "./pages/SingleCountry";
 function App() {
   return (
 <Router>
-  <Navbar />
+  <MyNavbar />
     <Routes>
 
       <Route path="/" element={<Home />} />

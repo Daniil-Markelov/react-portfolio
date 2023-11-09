@@ -6,16 +6,24 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import Card from 'react-bootstrap/Card';
+import CurChart from "../components/CurChart";
 
 const SingleCountry = () => {
     let { name } = useParams();
     const [country, setCountry] = useState({});
     const [weather, setWeather] = useState(null);
+    const countryCurrencyCode = country.currencies || null;
+    const currencyCode = countryCurrencyCode ? Object.keys(countryCurrencyCode)[0] : null;
+    console.log("Currency Code:", currencyCode);
+
+
 
     useEffect(() => {
         axios.get(`https://restcountries.com/v3.1/name/${name}`)
             .then(response => {
                 setCountry(response.data[0]);
+                //console.log("Country Data:", response.data[0]);
+
             })
             .catch(error => {
                 console.log(error);
@@ -24,7 +32,7 @@ const SingleCountry = () => {
 
     useEffect(() => {
         const getWeatherData = async () => {
-            if (country.capital) { // Check if country.capital is available
+            if (country.capital) {
                 try {
                     const response = await axios.get(
                         `https://api.openweathermap.org/data/2.5/weather?q=${country.capital}&appid=37b8781a1a5781ff5cd05353f516fb49&units=metric`
@@ -44,9 +52,11 @@ const SingleCountry = () => {
             <h3>Loading...</h3>
         );
     }
+    console.log("Country Currency Code:", countryCurrencyCode);
+
 
     return (
-        <Container>
+        <Container fluid className="mt-5 text-center" >
              <Card>
              <Card.Body>
                             <Row>
@@ -61,27 +71,31 @@ const SingleCountry = () => {
               <p><strong>Area:</strong> {country.area} km²</p>
             </Col>
                 
-                <Col sm={12} lg={4}>
+                <Col sm={12} lg={6}>
                 <h2>Weather in {country.capital}</h2>
               {weather && (
                 <div className="text-center">
                   <p><strong>Temperature:</strong> {weather.main.temp} °C</p>
                   <p><strong>Weather:</strong> {weather.weather[0].description}{getWeatherEmoji(weather.weather[0].main)}</p>
-                  {/* Add more weather emojis based on weather conditions */}
                 </div>
               )}
             </Col>
             </Row>
-
+            <Row className="mt-4">
+            <Col>
+              {countryCurrencyCode && <CurChart currencyCode={currencyCode} />}
+            </Col>
+          </Row>
              </Card.Body>
 
              </Card>
 
         </Container>
+       
+
     );
 
     function getWeatherEmoji(weatherCondition) {
-        // Map weather conditions to emojis based on your preferences
         const emojiMap = {
           'Clear': '☀️',
           'Clouds': '☁️',
@@ -90,7 +104,7 @@ const SingleCountry = () => {
           
         };
       
-        return emojiMap[weatherCondition] || '🌦️'; // Default emoji
+        return emojiMap[weatherCondition] || '🌦️'; 
       }
 };
 
