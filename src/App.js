@@ -7,6 +7,7 @@ import NavigateExample from "./pages/NavigateExample";
 import MyNavbar from "./components/MyNavbar";
 import CountryCard from "./components/CountryCard";
 import SingleCountry from "./pages/SingleCountry";
+import 'mapbox-gl/dist/mapbox-gl.css';
 function App() {
   return (
 <Router>
